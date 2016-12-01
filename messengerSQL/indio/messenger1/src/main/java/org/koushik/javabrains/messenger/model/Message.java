@@ -11,11 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
+@Table (name="messages")
 public class Message {
 
 	@Id
@@ -27,9 +29,9 @@ public class Message {
 	private String author;
 	@Column
 	private Date created;
-
-	private Map<Long, Comment> comments = new HashMap<>();
-	private List<Link> links = new ArrayList<>();
+//
+//	private Map<Long, Comment> comments = new HashMap<>();
+//	private List<Link> links = new ArrayList<>();
 
 	public Message() {
 
@@ -74,28 +76,28 @@ public class Message {
 		this.author = author;
 	}
 
-	@XmlTransient
-	public Map<Long, Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(Map<Long, Comment> comments) {
-		this.comments = comments;
-	}
-
-	public List<Link> getLinks() {
-		return links;
-	}
-
-	public void setLinks(List<Link> links) {
-		this.links = links;
-	}
+//	@XmlTransient
+//	public Map<Long, Comment> getComments() {
+//		return comments;
+//	}
+//
+//	public void setComments(Map<Long, Comment> comments) {
+//		this.comments = comments;
+//	}
+//
+//	public List<Link> getLinks() {
+//		return links;
+//	}
+//
+//	public void setLinks(List<Link> links) {
+//		this.links = links;
+//	}
 
 	public void addLink(String url, String rel) {
 		Link link = new Link();
 		link.setLink(url);
 		link.setRel(rel);
-		links.add(link);
+//		links.add(link);
 	}
 
 }

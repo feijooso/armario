@@ -11,11 +11,11 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
-		<mapping class="org.koushik.javabrains.messenger.model.Message" />
-		<mapping class="org.koushik.javabrains.messenger.model.Comment" />
-		<mapping class="org.koushik.javabrains.messenger.model.Profile" />
-		<mapping resource="message.hibernate.xml" />
-		<mapping resource="profile.hibernate.xml" />
-		<mapping resource="comment.hibernate.xml" />
+		<mapping class="org.koushik.javabrains.messenger.model.Message" /> 
+ 		<mapping class="org.koushik.javabrains.messenger.model.Comment" /> 
+ 		<mapping class="org.koushik.javabrains.messenger.model.Profile" /> 
+<!-- 		<mapping resource="message.hibernate.xml" /> -->
+<!-- 		<mapping resource="profile.hibernate.xml" /> -->
+<!-- 		<mapping resource="comment.hibernate.xml" /> -->
 	</session-factory>
 </hibernate-configuration>
