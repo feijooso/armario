@@ -38,12 +38,12 @@ public class ProfileDAO {
         return profile;
     }
  
-    public int deleteProfile(long id) {
+    public int deleteProfile(String profileName) {
         Session session = SessionUtil.getSession();
         Transaction tx = session.beginTransaction();
-        String hql = "delete from Profile where id = :id";
+        String hql = "delete from Profile where profileName = :profileName";
         Query query = session.createQuery(hql);
-        query.setLong("id",id);
+        query.setString("profileName",profileName);
         int rowCount = query.executeUpdate();
         System.out.println("Rows affected: " + rowCount);
         tx.commit();
@@ -51,17 +51,17 @@ public class ProfileDAO {
         return rowCount;
     }
     
-    public int updateProfile(long id, Profile prf){
-         if(id <=0)  
+    public int updateProfile(String profileName, Profile prf){
+         if(profileName == null)  
                return 0;  
          Session session = SessionUtil.getSession();
             Transaction tx = session.beginTransaction();
             String hql = "update Profile set profileName=:profileName, firstName=:firstName, lastName=:lastName, created=:created where id = :id";
             Query query = session.createQuery(hql);
-            query.setLong("id",id);
+            query.setString("profileName",profileName);
             query.setString("profileName",prf.getProfileName());
             query.setString("firstName",prf.getFirstName());
-            query.setString("lastName", prf.getFirstName());
+            query.setString("lastName", prf.getLastName());
             query.setDate("created", prf.getCreated());
             int rowCount = query.executeUpdate();
             System.out.println("Rows affected: " + rowCount);

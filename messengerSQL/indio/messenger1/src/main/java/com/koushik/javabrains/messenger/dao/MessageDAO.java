@@ -26,7 +26,7 @@ public class MessageDAO {
 
 	public Message getMessage(long id) {
 		Session session = SessionUtil.getSession();
-		Query query = session.createQuery("from Message where id=id");
+		Query query = session.createQuery("from Message where id = :id");
 		Message message = (Message) query.uniqueResult();
 		if (message == null) {
 			throw new DataNotFoundException("El mensaje " + id + " no ha sido encontrado.");
@@ -59,7 +59,7 @@ public class MessageDAO {
 			return 0;
 		Session session = SessionUtil.getSession();
 		Transaction tx = session.beginTransaction();
-		String hql = "update Message set message = :message, author=:author, created =: created where id = :id";
+		String hql = "update Message set message = :message, author= :author, created = :created where id = :id";
 		Query query = session.createQuery(hql);
 		query.setLong("id", id);
 		query.setString("message", msj.getMessage());
